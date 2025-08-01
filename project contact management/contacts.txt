@@ -1,0 +1,3 @@
+Emergency|+91100|emergency@gov.in
+abc|+9999999900|abc@fw.in
+abe|+988888888888|se@12.in

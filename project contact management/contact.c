@@ -2,11 +2,48 @@
 #include "contact.h"
 #include <stdlib.h>
 #include <string.h>
-
+#include "storage.h"
 //add constact manager
-void addContact(ContactList **contacts, int *size, int *capacity){
-    //what if size is greater than capacity -> base case
-    //you keep adding more, you'll need to resize (reallocate) the array if size exceeds capacity.
+#include "validation.h"
+int isDuplicate(ContactList *contacts, int size, const char *name, const char *phone) {
+    for (int i = 0; i < size; i++) {
+        if (strcasecmp(contacts[i].name, name) == 0 || strcmp(contacts[i].phone, phone) == 0) {
+            return 1;  // duplicate found
+        }
+    }
+    return 0;
+}
+void addContact(ContactList **contacts, int *size, int *capacity) {
+    ContactList newContact;
+    do {
+        printf("Enter name (start with letter, only letters and digits): ");
+        scanf(" %[^\n]", newContact.name);
+        if (!isValidName(newContact.name)) {
+            printf("Invalid name. Try again.\n");
+        }
+    } while (!isValidName(newContact.name));
+
+    do {
+        printf("Enter phone (+digits or digits only): ");
+        scanf(" %[^\n]", newContact.phone);
+        if (!isValidPhone(newContact.phone)) {
+            printf("Invalid phone. Try again.\n");
+        }
+    } while (!isValidPhone(newContact.phone));
+    // Check for duplicates before adding
+     if (isDuplicate(*contacts, *size, newContact.name, newContact.phone)) {
+        printf("Duplicate contact found! Not added.\n");
+        return;
+    }
+
+    do {
+        printf("Enter email (e.g. abc123@domain.com or .in): ");
+        scanf(" %[^\n]", newContact.email);
+        if (!isValidEmail(newContact.email)) {
+            printf("Invalid email format. Try again.\n");
+        }
+    } while (!isValidEmail(newContact.email));
+
     if (*size >= *capacity) {
         *capacity *= 2;
         ContactList *temp = realloc(*contacts, (*capacity) * sizeof(ContactList));
@@ -17,17 +54,9 @@ void addContact(ContactList **contacts, int *size, int *capacity){
         *contacts = temp;
     }
 
-    ContactList newContact;
-    printf("Enter name: ");
-    scanf(" %[^\n]", newContact.name);
-    printf("Enter phone: ");
-    scanf(" %[^\n]", newContact.phone);
-    printf("Enter email: ");
-    scanf(" %[^\n]", newContact.email);
-
     (*contacts)[*size] = newContact;
     (*size)++;
-    printf("✅ Contact added!\n");
+    printf(" Contact added successfully!\n");
 }
 
 
@@ -50,6 +79,9 @@ void UserChoise(){
     ContactList *contacts = malloc(2 * sizeof(ContactList));
     int size = 0;
     int capacity = 2;
+     // Load from file
+    size = loadContactsFromFile(&contacts, &capacity);
+    ensureEmergencyContact(&contacts, &size, &capacity);
     int choice;
     while (1) {
         printf("\n--- Contact Manager ---\n");
@@ -58,10 +90,11 @@ void UserChoise(){
         printf("3. Exit\n");
         printf("Enter choice: ");
         scanf("%d", &choice);
-        getchar(); // newline
+        getchar(); 
 
         if (choice == 1) {
             addContact(&contacts, &size, &capacity);
+            saveContactsToFile(contacts, size);  // Save after adding
         } else if (choice == 2) {
             viewContacts(contacts, size);
         } else if (choice == 3) {
