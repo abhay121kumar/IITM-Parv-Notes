@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "storage.h"
-//add constact manager
+
 #include "validation.h"
 int isDuplicate(ContactList *contacts, int size, const char *name, const char *phone) {
     for (int i = 0; i < size; i++) {
@@ -13,6 +13,7 @@ int isDuplicate(ContactList *contacts, int size, const char *name, const char *p
     }
     return 0;
 }
+//add constact manager
 void addContact(ContactList **contacts, int *size, int *capacity) {
     ContactList newContact;
     do {
