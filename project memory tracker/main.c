@@ -3,7 +3,8 @@
 
 int main() {
     char* a = (char*) mt_malloc(100);
-    int* b = (int*) mt_calloc(10, sizeof(int));
+    // int* b = (int*) mt_calloc(10, sizeof(int));
+    int* b = (int*) mt_calloc(0, sizeof(int));
     b = (int*) mt_realloc(b, 20 * sizeof(int));
     printf("Allocated memory at %p and %p\n", a, b);
     mt_free(a);

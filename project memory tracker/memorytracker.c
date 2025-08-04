@@ -41,6 +41,10 @@ static void init_tracker() {
 
 void* mt_malloc(size_t size) {
     init_tracker();
+    if (size == 0) {
+        log_event("WARN", NULL, size, "malloc(0) ignored");
+        return NULL;
+    }
     void* ptr = malloc(size);
     if (ptr) {
         ht_insert(ptr, size, "malloc");
@@ -51,6 +55,10 @@ void* mt_malloc(size_t size) {
 
 void* mt_calloc(size_t num, size_t size) {
     init_tracker();
+    if (num == 0 || size == 0) {
+        log_event("WARN", NULL, 0, "calloc(0, x) or calloc(x, 0) ignored");
+        return NULL;
+    }
     void* ptr = calloc(num, size);
     if (ptr) {
         ht_insert(ptr, num * size, "calloc");

@@ -825,3 +825,39 @@ Addr=000002407D4A1B60 | Size=40 | Type=calloc | Freed ok
 Total Allocated: 220 bytes
 Total Freed:     140 bytes
 Memory Leaked:   80 bytes
+
+==================== NEW PROGRAM RUN ====================
+Timestamp: Mon Aug  4 14:38:51 2025
+=========================================================
+[Mon Aug  4 14:38:51 2025] ALLOC: Addr=0000024257744EF0 | Size=100 | malloc
+[Mon Aug  4 14:38:51 2025] ALLOC: Addr=000002425773BC80 | Size=0 | calloc
+[Mon Aug  4 14:38:51 2025] FREE: Addr=000002425773BC80 | Size=0 | realloc old
+[Mon Aug  4 14:38:51 2025] ALLOC: Addr=0000024257744F60 | Size=80 | realloc new
+[Mon Aug  4 14:38:51 2025] FREE: Addr=0000024257744EF0 | Size=0 | ok
+Addr=000002425773BC80 | Size=0 | Type=calloc | Freed ok
+Addr=0000024257744EF0 | Size=100 | Type=malloc | Freed ok
+Addr=0000024257744F60 | Size=80 | Type=realloc | Leaked not freed
+
+=========================================================
+--- Memory Tracker Summary ---
+--- Memory Usage Stats ---
+Total Allocated: 180 bytes
+Total Freed:     100 bytes
+Memory Leaked:   80 bytes
+
+==================== NEW PROGRAM RUN ====================
+Timestamp: Mon Aug  4 14:41:26 2025
+=========================================================
+[Mon Aug  4 14:41:26 2025] ALLOC: Addr=000002AE32AA4EF0 | Size=100 | malloc
+[Mon Aug  4 14:41:26 2025] WARN: Addr=0000000000000000 | Size=0 | calloc(0, x) or calloc(x, 0) ignored
+[Mon Aug  4 14:41:26 2025] ALLOC: Addr=000002AE32AA0CC0 | Size=80 | realloc new
+[Mon Aug  4 14:41:26 2025] FREE: Addr=000002AE32AA4EF0 | Size=0 | ok
+Addr=000002AE32AA0CC0 | Size=80 | Type=realloc | Leaked not freed
+Addr=000002AE32AA4EF0 | Size=100 | Type=malloc | Freed ok
+
+=========================================================
+--- Memory Tracker Summary ---
+--- Memory Usage Stats ---
+Total Allocated: 180 bytes
+Total Freed:     100 bytes
+Memory Leaked:   80 bytes
