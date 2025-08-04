@@ -23,3 +23,40 @@
 [Mon Aug  4 09:16:28 2025] FREE: Addr=000002B26DAF11B0 | Size=0 | realloc old
 [Mon Aug  4 09:16:28 2025] ALLOC: Addr=000002B26DAEFF60 | Size=80 | realloc new
 [Mon Aug  4 09:16:28 2025] FREE: Addr=000002B26DAE3C90 | Size=0 | ok
+[Mon Aug  4 11:11:26 2025] ALLOC: Addr=0000021D358C3C90 | Size=100 | malloc
+[Mon Aug  4 11:11:26 2025] ALLOC: Addr=0000021D358D1120 | Size=40 | calloc
+[Mon Aug  4 11:11:26 2025] FREE: Addr=0000021D358D1120 | Size=0 | realloc old
+[Mon Aug  4 11:11:26 2025] ALLOC: Addr=0000021D358CFF00 | Size=80 | realloc new
+[Mon Aug  4 11:11:26 2025] FREE: Addr=0000021D358C3C90 | Size=0 | ok
+[Mon Aug  4 11:13:05 2025] ALLOC: Addr=000002AE74413C90 | Size=100 | malloc
+[Mon Aug  4 11:13:05 2025] ALLOC: Addr=000002AE74421420 | Size=40 | calloc
+[Mon Aug  4 11:13:05 2025] FREE: Addr=000002AE74421420 | Size=0 | realloc old
+[Mon Aug  4 11:13:05 2025] ALLOC: Addr=000002AE7441FCC0 | Size=80 | realloc new
+[Mon Aug  4 11:13:05 2025] FREE: Addr=000002AE74413C90 | Size=0 | ok
+[Mon Aug  4 11:13:14 2025] ALLOC: Addr=0000029C544AB820 | Size=100 | malloc
+[Mon Aug  4 11:13:14 2025] ALLOC: Addr=0000029C544B1160 | Size=40 | calloc
+[Mon Aug  4 11:13:14 2025] FREE: Addr=0000029C544B1160 | Size=0 | realloc old
+[Mon Aug  4 11:13:14 2025] ALLOC: Addr=0000029C544B0600 | Size=80 | realloc new
+[Mon Aug  4 11:13:14 2025] FREE: Addr=0000029C544AB820 | Size=0 | ok
+[Mon Aug  4 11:13:54 2025] ALLOC: Addr=0000018070A23C90 | Size=100 | malloc
+[Mon Aug  4 11:13:54 2025] ALLOC: Addr=0000018070A31750 | Size=40 | calloc
+[Mon Aug  4 11:13:54 2025] FREE: Addr=0000018070A31750 | Size=0 | realloc old
+[Mon Aug  4 11:13:54 2025] ALLOC: Addr=0000018070A2F960 | Size=80 | realloc new
+[Mon Aug  4 11:13:54 2025] FREE: Addr=0000018070A23C90 | Size=0 | ok
+[Mon Aug  4 11:14:55 2025] ALLOC: Addr=000001E9B0473C90 | Size=100 | malloc
+[Mon Aug  4 11:14:55 2025] ALLOC: Addr=000001E9B0481450 | Size=40 | calloc
+[Mon Aug  4 11:14:55 2025] FREE: Addr=000001E9B0481450 | Size=0 | realloc old
+[Mon Aug  4 11:14:55 2025] ALLOC: Addr=000001E9B047FCC0 | Size=80 | realloc new
+[Mon Aug  4 11:14:55 2025] FREE: Addr=000001E9B0473C90 | Size=0 | ok
+[Mon Aug  4 11:14:55 2025] FREE: Addr=000001E9B0473C90 | Size=0 | warning: invalid or double free
+[Mon Aug  4 11:15:12 2025] ALLOC: Addr=0000027747D63C90 | Size=100 | malloc
+[Mon Aug  4 11:15:12 2025] ALLOC: Addr=0000027747D71630 | Size=40 | calloc
+[Mon Aug  4 11:15:12 2025] FREE: Addr=0000027747D71630 | Size=0 | realloc old
+[Mon Aug  4 11:15:12 2025] ALLOC: Addr=0000027747D6FC00 | Size=80 | realloc new
+[Mon Aug  4 11:15:12 2025] FREE: Addr=0000027747D63C90 | Size=0 | ok
+[Mon Aug  4 11:15:12 2025] FREE: Addr=0000027747D63C90 | Size=0 | warning: invalid or double free
+[Mon Aug  4 11:18:11 2025] ALLOC: Addr=000002BDAACCB820 | Size=100 | malloc
+[Mon Aug  4 11:18:11 2025] ALLOC: Addr=000002BDAACD1160 | Size=40 | calloc
+[Mon Aug  4 11:18:11 2025] FREE: Addr=000002BDAACD1160 | Size=0 | realloc old
+[Mon Aug  4 11:18:11 2025] ALLOC: Addr=000002BDAACD0180 | Size=80 | realloc new
+[Mon Aug  4 11:18:11 2025] FREE: Addr=000002BDAACCB820 | Size=0 | ok
