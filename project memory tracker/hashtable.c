@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 #define TABLE_SIZE 1024
-static size_t total_allocated = 0;
-static size_t total_freed = 0;
+extern size_t total_allocated;
+extern size_t total_freed;
 static MemoryBlock* hashTable[TABLE_SIZE];
 
 static size_t hash_ptr(void* ptr) {
@@ -93,24 +93,35 @@ MemoryBlock* ht_find(void* ptr) {
 // }
 
 void ht_dump_all() {
-    printf("\n--- Memory Tracker Summary ---\n");
-    printf("\n--- Memory Usage Stats ---\n");
-    printf("Total Allocated: %zu bytes\n", total_allocated);
-    printf("Total Freed:     %zu bytes\n", total_freed);
-    printf("Memory Leaked:   %zu bytes\n", total_allocated - total_freed);
+    FILE* log = fopen("memory_log.txt", "a"); // append mode
+
+    if (!log) {
+        perror("Unable to open memory_log.txt");
+        return;
+    }
+
+
+    // fprintf(log, "--- Memory Tracker Summary ---\n");
+    // fprintf(log, "--- Memory Usage Stats ---\n");
+    // fprintf(log, "Total Allocated: %zu bytes\n", total_allocated);
+    // fprintf(log, "Total Freed:     %zu bytes\n", total_freed);
+    // fprintf(log, "Memory Leaked:   %zu bytes\n", total_allocated - total_freed);
 
     for (int i = 0; i < TABLE_SIZE; ++i) {
         MemoryBlock* curr = hashTable[i];
         while (curr) {
-            printf("Addr=%p | Size=%zu | Type=%s | %s\n",
-                   curr->address,
-                   curr->size,
-                   curr->type,
-                   curr->isFreed ? "Freed ok" : "Leaked not freed");
+            fprintf(log, "Addr=%p | Size=%zu | Type=%s | %s\n",
+                    curr->address,
+                    curr->size,
+                    curr->type,
+                    curr->isFreed ? "Freed ok" : "Leaked not freed");
             curr = curr->next;
         }
     }
+
+    fclose(log);
 }
+
 
 
 void ht_free_all() {
