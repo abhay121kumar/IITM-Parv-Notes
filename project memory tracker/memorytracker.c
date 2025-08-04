@@ -61,9 +61,12 @@ void mt_free(void* ptr) {
     }
 }
 
+// void mt_summary() {
+//     printf("\n--- Memory Tracker Summary ---\n");
+//     ht_dump_leaks();
+// }
 void mt_summary() {
-    printf("\n--- Memory Tracker Summary ---\n");
-    ht_dump_leaks();
+    ht_dump_all();  // Instead of just leaks
 }
 
 void mt_finalize() {

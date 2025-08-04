@@ -17,7 +17,8 @@ void ht_init();
 void ht_insert(void* ptr, size_t size, const char* type);
 int  ht_remove(void* ptr);
 MemoryBlock* ht_find(void* ptr);
-void ht_dump_leaks();
+// void ht_dump_leaks();// Print all unfreed blocks
+void ht_dump_all();    // Print all memory blocks
 void ht_free_all();
 
 #endif 

@@ -1,4 +1,3 @@
-// main.c
 #include "memorytracker.h"
 #include <stdio.h>
 

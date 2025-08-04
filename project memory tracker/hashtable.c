@@ -54,19 +54,35 @@ MemoryBlock* ht_find(void* ptr) {
     return NULL;
 }
 
-void ht_dump_leaks() {
-    printf("\n--- Memory Leaks Detected ---\n");
+// void ht_dump_leaks() {
+//     printf("\n--- Memory Leaks Detected ---\n");
+//     for (int i = 0; i < TABLE_SIZE; ++i) {
+//         MemoryBlock* curr = hashTable[i];
+//         while (curr) {
+//             if (!curr->isFreed) {
+//                 printf("LEAK: Addr=%p | Size=%zu | Type=%s\n",
+//                        curr->address, curr->size, curr->type);
+//             }
+//             curr = curr->next;
+//         }
+//     }
+// }
+
+void ht_dump_all() {
+    printf("\n--- Memory Tracker Summary ---\n");
     for (int i = 0; i < TABLE_SIZE; ++i) {
         MemoryBlock* curr = hashTable[i];
         while (curr) {
-            if (!curr->isFreed) {
-                printf("LEAK: Addr=%p | Size=%zu | Type=%s\n",
-                       curr->address, curr->size, curr->type);
-            }
+            printf("Addr=%p | Size=%zu | Type=%s | %s\n",
+                   curr->address,
+                   curr->size,
+                   curr->type,
+                   curr->isFreed ? "Freed ok" : "Leaked not freed");
             curr = curr->next;
         }
     }
 }
+
 
 void ht_free_all() {
     for (int i = 0; i < TABLE_SIZE; ++i) {
