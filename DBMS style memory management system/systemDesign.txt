@@ -1,0 +1,70 @@
+Build a DBMS-style Memory Management System in C that:
+
+Allocates memory for tuples efficiently.
+
+Uses slab allocation to minimize fragmentation and improve performance.
+
+Tracks allocation patterns (e.g., frequency, peak usage).
+
+Quantifies memory usage (allocated, freed, in-use, slabs created, etc.).
+
+Detects and reports memory leaks or misuse.
+
+
+🚨 Edge Cases to Consider
+
+| Case              | Description                                       |
+| ----------------- | ------------------------------------------------- |
+| Tuple overflow    | Allocating a tuple larger than slab block size.   |
+| Memory leak       | Tuples not deallocated before program exit.       |
+| Double free       | Same tuple pointer freed more than once.          |
+| Fragmentation     | Partial block usage — slab space wasted.          |
+| Slab exhaustion   | All blocks are full and new slab needed.          |
+| Misaligned memory | Incorrect memory alignment affecting performance. |
+| Invalid frees     | Freeing a pointer not from this allocator.        |
+
+
+
+
+
+
+🔍 Design Approach
+Let’s break this into components like a real DBMS:
+
+📌 Component 1: Tuple
+Simulate a "row" in a table.
+
+Assume fixed-size tuples for simplicity (e.g., 64 bytes).
+
+📌 Component 2: Slab Allocator
+Pre-allocate large chunks (slabs) divided into tuple-sized blocks.
+
+Maintains:
+
+Free list.
+
+Allocation bitmap.
+
+Stats (used blocks, total blocks, slab ID).
+
+📌 Component 3: Memory Manager
+Tracks:
+
+Total slabs.
+
+Allocation patterns (e.g., per slab).
+
+Leaks (tuples not freed).
+
+Live memory graph (optional with CLI).
+
+📌 Component 4: Logger / Visualizer
+Print summary of:
+
+Memory in use.
+
+Slabs created/destroyed.
+
+Leak report on shutdown.
+
+Allocation history.

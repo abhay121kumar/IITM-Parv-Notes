@@ -1,0 +1,6 @@
+Shutdown Leak Report
+====================
+Leaked Tuple in Slab 1, Block 0
+Leaked Tuple in Slab 1, Block 2
+--------------------
+Total Memory Leaks: 2
