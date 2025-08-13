@@ -190,27 +190,68 @@ using namespace std;
 // }
 
 
-class a{
-    public:
-    void show(){
-        cout<<"a"<<endl;
-    }
-};
+// class a{
+//     public:
+//     void show(){
+//         cout<<"a"<<endl;
+//     }
+// };
 
-class b:virtual public a{
-    public:
-};
-class c:virtual public a{
+// class b:virtual public a{
+//     public:
+// };
+// class c:virtual public a{
     
-};
-class d:public b,public c{
+// };
+// class d:public b,public c{
     
-};
+// };
 
-int main(){
-    d obj;
-    obj.show();
-}
+// int main(){
+//     d obj;
+//     obj.show();
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ___________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
