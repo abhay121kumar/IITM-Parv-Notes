@@ -1,4 +1,2 @@
-writing in the file
- pppppppppppp
- kkkkkkkkkk
-kkkkkkkkkk
+new line added using w+ that is write and read
+new line added using a+ that is append and read
